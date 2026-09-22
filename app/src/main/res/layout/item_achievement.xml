@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#F1F5F9">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Icon/Emoji Circle Background -->
+        <FrameLayout
+            android:id="@+id/flIconContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_version_badge"
+            android:backgroundTint="#FEF3C7"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp">
+
+            <TextView
+                android:id="@+id/tvBadgeEmoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔥"
+                android:textSize="20sp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/flIconContainer"
+            android:layout_toStartOf="@id/flStatusContainer"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/tvBadgeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="7-Day Streak!" />
+
+            <TextView
+                android:id="@+id/tvBadgeDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp"
+                android:text="Studied 7 days in a row" />
+        </LinearLayout>
+
+        <!-- Right container for check or percentage text -->
+        <FrameLayout
+            android:id="@+id/flStatusContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
+
+            <!-- Checkmark view -->
+            <TextView
+                android:id="@+id/tvCheckmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✅"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+            <!-- Progress text view -->
+            <TextView
+                android:id="@+id/tvProgressPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80%"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:background="@drawable/bg_version_badge"
+                android:backgroundTint="#E2E8F0"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:visibility="gone" />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,3 +1,64 @@
 <resources>
     <string name="app_name">AcademicFlow</string>
+
+    <!-- Login screen -->
+    <string name="welcome_back">Welcome back</string>
+    <string name="sign_in_subtitle">Sign in to track your studies</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="dont_have_account">Don\'t have an account? Sign Up</string>
+
+    <!-- Registration screen -->
+    <string name="create_account">Create Account</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="already_have_account">Already have an account? Sign In</string>
+
+    <!-- Dashboard -->
+    <string name="weekly_progress">Weekly Progress</string>
+    <string name="add_session">+ Add Study Session</string>
+    <string name="weekly_goal_format">Goal: %1$.1f hrs</string>
+    <string name="studied_format">%1$.1f / %2$.1f hrs</string>
+
+    <!-- Add Session -->
+    <string name="add_study_session">Add Session</string>
+    <string name="duration_hours">Duration (Hours)</string>
+    <string name="subject">Subject</string>
+    <string name="date">Date</string>
+    <string name="description">Description</string>
+    <string name="attach_photo">Attach Notes / Photo</string>
+    <string name="choose_image">+ Choose Image</string>
+    <string name="save_session">Save Session</string>
+
+    <!-- History -->
+    <string name="session_history">Session History</string>
+    <string name="filter">Filter</string>
+    <string name="view_attached_photo">View Attached Photo</string>
+
+    <!-- Subjects -->
+    <string name="subjects">Subjects</string>
+    <string name="add_custom_subject">+ Add Custom Subject</string>
+
+    <!-- Goals -->
+    <string name="weekly_goals">Weekly Goals</string>
+    <string name="total_weekly_goal">Total Weekly Goal</string>
+    <string name="save_goals">Save Goals</string>
+
+    <!-- Graphs -->
+    <string name="study_graphs">Study Graphs</string>
+    <string name="hours_per_subject">Hours per Subject</string>
+    <string name="daily_trend">Daily Trend</string>
+
+    <!-- Achievements -->
+    <string name="achievements">Achievements</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_settings">Settings</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_add">Add</string>
 </resources>

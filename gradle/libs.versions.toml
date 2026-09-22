@@ -11,10 +11,10 @@ constraintlayout = "2.1.4"
 kotlin = "2.1.0"
 
 # KSP (for Room annotation processing)
-ksp = "2.3.1"
+ksp = "2.1.0-1.0.29"
 
 # Room Database
-room = "2.6.1"
+room = "2.8.4"
 
 # Retrofit (for REST API)
 retrofit = "2.11.0"

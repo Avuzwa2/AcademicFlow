@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".AcademicFlowApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -10,16 +11,66 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AcademicFlow">
+        android:theme="@style/Theme.AcademicFlow"
+        tools:targetApi="31">
+
+        <!-- Login screen - launcher (first screen shown) -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ui.auth.LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AcademicFlow">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Registration screen -->
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+
+        <!-- Dashboard screen -->
+        <activity
+            android:name=".ui.dashboard.DashboardActivity"
+            android:exported="false" />
+
+        <!-- Add Study Session screen -->
+        <activity
+            android:name=".ui.session.AddSessionActivity"
+            android:exported="false" />
+
+        <!-- Session History screen -->
+        <activity
+            android:name=".ui.session.SessionHistoryActivity"
+            android:exported="false" />
+
+        <!-- Manage Subjects screen -->
+        <activity
+            android:name=".ui.subject.SubjectListActivity"
+            android:exported="false" />
+
+        <!-- Weekly Goals screen -->
+        <activity
+            android:name=".ui.goals.WeeklyGoalsActivity"
+            android:exported="false" />
+
+        <!-- Study Graphs screen -->
+        <activity
+            android:name=".ui.graph.StudyGraphsActivity"
+            android:exported="false" />
+
+        <!-- Achievements screen -->
+        <activity
+            android:name=".ui.achievements.AchievementsActivity"
+            android:exported="false" />
+
+        <!-- Default MainActivity (kept as fallback) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AcademicFlow" />
+
     </application>
 
 </manifest>
