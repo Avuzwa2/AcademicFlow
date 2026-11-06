@@ -6,11 +6,7 @@ plugins {
 
 android {
     namespace = "com.academicflow.app"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.academicflow.app"
@@ -27,11 +23,15 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            isMinifyEnabled = false
         }
     }
 
@@ -82,10 +82,11 @@ dependencies {
     // Charts (MPAndroidChart)
     implementation(libs.mpandroidchart)
 
-    // Firebase — will uncomment after setting up google-services.json
-    // implementation(platform(libs.firebase.bom))
-    // implementation(libs.firebase.auth)
-    // implementation(libs.firebase.firestore)
+    // Firebase (Cloud NoSQL & Blob Storage)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
 
     // Security (encrypted password storage)
     implementation(libs.security.crypto)

@@ -85,6 +85,7 @@ mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", versio
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage-ktx" }
 
 # Security (for password hashing)
 security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".AcademicFlowApp"
         android:allowBackup="true"
@@ -63,6 +67,11 @@
         <!-- Achievements screen -->
         <activity
             android:name=".ui.achievements.AchievementsActivity"
+            android:exported="false" />
+
+        <!-- Settings screen -->
+        <activity
+            android:name=".ui.settings.SettingsActivity"
             android:exported="false" />
 
         <!-- Default MainActivity (kept as fallback) -->

@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.academicflow.app.AcademicFlowApp
-import com.academicflow.app.data.local.entity.Subject
 import com.academicflow.app.databinding.ActivityWeeklyGoalsBinding
 import com.academicflow.app.databinding.ItemWeeklyGoalSubjectBinding
 import com.academicflow.app.util.SessionManager
@@ -28,6 +27,12 @@ class WeeklyGoalsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         session = SessionManager(this)
+
+        binding.etTotalHoursGoal.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) { updateTotalBanner() }
+        })
 
         loadWeeklyGoals()
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AcademicFlow</string>
+
+    <!-- Login screen -->
+    <string name="welcome_back">Welkom terug</string>
+    <string name="sign_in_subtitle">Meld aan om u studies na te spoor</string>
+    <string name="username">Gebruikersnaam</string>
+    <string name="password">Wagwoord</string>
+    <string name="sign_in">Teken in</string>
+    <string name="dont_have_account">Het u nie \'n rekening nie? Registreer</string>
+
+    <!-- Registration screen -->
+    <string name="create_account">Skep Rekening</string>
+    <string name="confirm_password">Bevestig Wagwoord</string>
+    <string name="register">Registreer</string>
+    <string name="already_have_account">Het u reeds \'n rekening? Teken in</string>
+
+    <!-- Dashboard -->
+    <string name="weekly_progress">Weeklikse Vordering</string>
+    <string name="add_session">+ Voeg Studiesessie By</string>
+    <string name="weekly_goal_format">Doelwit: %1$.1f uur</string>
+    <string name="studied_format">%1$.1f / %2$.1f uur</string>
+
+    <!-- Add Session -->
+    <string name="add_study_session">Voeg Sessie By</string>
+    <string name="duration_hours">Duur (Uure)</string>
+    <string name="subject">Vak</string>
+    <string name="date">Datum</string>
+    <string name="description">Beskrywing</string>
+    <string name="attach_photo">Heg Notas / Foto aan</string>
+    <string name="choose_image">+ Kies Beeld</string>
+    <string name="save_session">Stoor Sessie</string>
+
+    <!-- History -->
+    <string name="session_history">Sessie Geskiedenis</string>
+    <string name="filter">Filtreer</string>
+    <string name="view_attached_photo">Bekyk Aangehegte Foto</string>
+
+    <!-- Subjects -->
+    <string name="subjects">Vakke</string>
+    <string name="add_custom_subject">+ Voeg Pasgemaakte Vak By</string>
+
+    <!-- Goals -->
+    <string name="weekly_goals">Weeklikse Doelwitte</string>
+    <string name="total_weekly_goal">Totale Weeklikse Doelwit</string>
+    <string name="save_goals">Stoor Doelwitte</string>
+
+    <!-- Graphs -->
+    <string name="study_graphs">Studiegrafieke</string>
+    <string name="hours_per_subject">Uure per Vak</string>
+    <string name="daily_trend">Daaglikse Neiging</string>
+
+    <!-- Achievements -->
+    <string name="achievements">Prestasies</string>
+
+    <!-- Settings -->
+    <string name="settings">Instellings</string>
+    <string name="logout">Teken Uit</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_settings">Instellings</string>
+    <string name="cd_back">Terug</string>
+    <string name="cd_add">Voeg by</string>
+</resources>

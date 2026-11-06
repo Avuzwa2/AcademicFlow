@@ -2,6 +2,8 @@ package com.academicflow.app
 
 import android.app.Application
 import com.academicflow.app.data.local.AppDatabase
+import com.academicflow.app.data.remote.FirebaseBlobStorageService
+import com.academicflow.app.data.remote.FirebaseNoSqlService
 import com.academicflow.app.data.repository.*
 
 /**
@@ -20,21 +22,30 @@ class AcademicFlowApp : Application() {
         AppDatabase.getInstance(this)
     }
 
+    // NoSQL Database & Blob Storage Services
+    val noSqlService: FirebaseNoSqlService by lazy {
+        FirebaseNoSqlService()
+    }
+
+    val blobStorageService: FirebaseBlobStorageService by lazy {
+        FirebaseBlobStorageService()
+    }
+
     // Repositories — each one is created once and reused
     val userRepository: UserRepository by lazy {
-        UserRepository(database.userDao())
+        UserRepository(database.userDao(), noSqlService)
     }
 
     val subjectRepository: SubjectRepository by lazy {
-        SubjectRepository(database.subjectDao())
+        SubjectRepository(database.subjectDao(), noSqlService)
     }
 
     val studySessionRepository: StudySessionRepository by lazy {
-        StudySessionRepository(database.studySessionDao())
+        StudySessionRepository(database.studySessionDao(), noSqlService, blobStorageService)
     }
 
     val weeklyGoalRepository: WeeklyGoalRepository by lazy {
-        WeeklyGoalRepository(database.weeklyGoalDao())
+        WeeklyGoalRepository(database.weeklyGoalDao(), noSqlService)
     }
 
     val achievementRepository: AchievementRepository by lazy {

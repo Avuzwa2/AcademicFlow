@@ -117,6 +117,17 @@
                 app:indicatorColor="@color/primary"
                 app:trackCornerRadius="6dp" />
 
+            <!-- Daily Study Motivation Quote (REST API) -->
+            <TextView
+                android:id="@+id/tvDailyQuote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="💡 &quot;Success is the sum of small efforts repeated day in and day out.&quot;"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:textStyle="italic" />
+
             <!-- Subjects Container Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"

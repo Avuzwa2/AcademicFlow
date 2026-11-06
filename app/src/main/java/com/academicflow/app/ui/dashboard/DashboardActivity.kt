@@ -20,6 +20,9 @@ import com.academicflow.app.ui.subject.SubjectListActivity
 import com.academicflow.app.util.SessionManager
 import kotlinx.coroutines.launch
 
+import com.academicflow.app.data.remote.QuoteApiService
+import com.academicflow.app.ui.settings.SettingsActivity
+
 /**
  * Main dashboard screen.
  * Displays weekly study metrics, subject breakdowns, and allows app-wide navigation.
@@ -44,6 +47,22 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         setupClickListeners()
+        fetchDailyQuote()
+    }
+
+    private fun fetchDailyQuote() {
+        lifecycleScope.launch {
+            try {
+                val quotes = QuoteApiService.create().getRandomQuote()
+                val firstQuote = quotes.firstOrNull()
+                if (firstQuote != null && !firstQuote.quote.isNullOrEmpty()) {
+                    val authorText = if (!firstQuote.author.isNullOrEmpty()) " — ${firstQuote.author}" else ""
+                    binding.tvDailyQuote.text = "💡 \"${firstQuote.quote}\"$authorText"
+                }
+            } catch (e: Exception) {
+                // Keep default quote if offline
+            }
+        }
     }
 
     override fun onResume() {
@@ -134,6 +153,7 @@ class DashboardActivity : AppCompatActivity() {
             "Study Graphs",
             "Achievements",
             "Manage Subjects",
+            "App Settings",
             "Logout"
         )
 
@@ -146,7 +166,8 @@ class DashboardActivity : AppCompatActivity() {
                     2 -> startActivity(Intent(this, StudyGraphsActivity::class.java))
                     3 -> startActivity(Intent(this, AchievementsActivity::class.java))
                     4 -> startActivity(Intent(this, SubjectListActivity::class.java))
-                    5 -> {
+                    5 -> startActivity(Intent(this, SettingsActivity::class.java))
+                    6 -> {
                         session.logout()
                         startActivity(Intent(this, LoginActivity::class.java))
                         finish()

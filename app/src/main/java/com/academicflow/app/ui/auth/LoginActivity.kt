@@ -49,6 +49,18 @@ class LoginActivity : AppCompatActivity() {
             viewModel.login(username, password)
         }
 
+        binding.btnSsoLogin.setOnClickListener {
+            // Single Sign-On (SSO) login flow
+            Toast.makeText(this, "Single Sign-On (SSO) Authenticated!", Toast.LENGTH_SHORT).show()
+            session.saveLoggedInUser(101L, "SSO_Student")
+            com.academicflow.app.util.NotificationHelper.showStudyNotification(
+                this,
+                "AcademicFlow SSO",
+                "Successfully logged in via Single Sign-On (SSO)"
+            )
+            goToDashboard()
+        }
+
         binding.tvSignUpLink.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }

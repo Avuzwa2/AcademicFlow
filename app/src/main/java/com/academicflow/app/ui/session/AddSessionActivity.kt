@@ -1,8 +1,11 @@
 package com.academicflow.app.ui.session
 
+import android.app.DatePickerDialog
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.academicflow.app.AcademicFlowApp
@@ -19,6 +22,16 @@ class AddSessionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddSessionBinding
     private lateinit var session: SessionManager
     private var subjectsList: List<Subject> = emptyList()
+    private var selectedDateMillis: Long = System.currentTimeMillis()
+    private var selectedPhotoUri: Uri? = null
+
+    private val selectPhotoLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            selectedPhotoUri = it
+            binding.tvPhotoStatus.text = "📷 Photo Attached"
+            Toast.makeText(this, "Photo selected!", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +40,43 @@ class AddSessionActivity : AppCompatActivity() {
 
         session = SessionManager(this)
 
-        // Set current date as default
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        binding.etDate.setText(sdf.format(Date()))
+        binding.etDate.setText(sdf.format(Date(selectedDateMillis)))
+
+        binding.etDate.setOnClickListener {
+            showDatePicker()
+        }
+
+        binding.btnUpload.setOnClickListener {
+            selectPhotoLauncher.launch("image/*")
+        }
 
         loadSubjects()
 
         binding.btnSave.setOnClickListener {
             saveStudySession()
         }
+    }
+
+    private fun showDatePicker() {
+        val calendar = Calendar.getInstance().apply { timeInMillis = selectedDateMillis }
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                val selectedCalendar = Calendar.getInstance().apply {
+                    set(Calendar.YEAR, year)
+                    set(Calendar.MONTH, month)
+                    set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                }
+                selectedDateMillis = selectedCalendar.timeInMillis
+                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                binding.etDate.setText(sdf.format(Date(selectedDateMillis)))
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
     }
 
     private fun loadSubjects() {
@@ -78,8 +119,9 @@ class AddSessionActivity : AppCompatActivity() {
                 userId = userId,
                 subjectId = selectedSubject.subjectId,
                 durationHours = duration,
-                sessionDate = System.currentTimeMillis(),
-                description = description
+                sessionDate = selectedDateMillis,
+                description = description,
+                photoUri = selectedPhotoUri?.toString()
             )
             app.studySessionRepository.addSession(studySession)
             Toast.makeText(this@AddSessionActivity, "Session saved successfully", Toast.LENGTH_SHORT).show()

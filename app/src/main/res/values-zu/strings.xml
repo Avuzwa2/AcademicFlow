@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AcademicFlow</string>
+
+    <!-- Login screen -->
+    <string name="welcome_back">Siyakwamukela futhi</string>
+    <string name="sign_in_subtitle">Ngena ngemvume ukuze ulandelele izifundo zakho</string>
+    <string name="username">Igama lomsebenzisi</string>
+    <string name="password">Iphasiwedi</string>
+    <string name="sign_in">Ngena</string>
+    <string name="dont_have_account">Awunayo i-akhawunti? Bhalisa</string>
+
+    <!-- Registration screen -->
+    <string name="create_account">Dala i-akhawunti</string>
+    <string name="confirm_password">Baqinisekise Iphasiwedi</string>
+    <string name="register">Bhalisa</string>
+    <string name="already_have_account">Usunayo i-akhawunti? Ngena</string>
+
+    <!-- Dashboard -->
+    <string name="weekly_progress">Inqubekelaphambili Yesonto</string>
+    <string name="add_session">+ Faka Isifundo</string>
+    <string name="weekly_goal_format">Inkomba: %1$.1f amahora</string>
+    <string name="studied_format">%1$.1f / %2$.1f amahora</string>
+
+    <!-- Add Session -->
+    <string name="add_study_session">Faka Isifundo</string>
+    <string name="duration_hours">Isikhathi (Amahora)</string>
+    <string name="subject">Isifundo</string>
+    <string name="date">Ilanga</string>
+    <string name="description">Incazelo</string>
+    <string name="attach_photo">Faka Isithombe</string>
+    <string name="choose_image">+ Khetha Isithombe</string>
+    <string name="save_session">Gcina Isifundo</string>
+
+    <!-- History -->
+    <string name="session_history">Umlando Wezifundo</string>
+    <string name="filter">Hlunga</string>
+    <string name="view_attached_photo">Buka Isithombe</string>
+
+    <!-- Subjects -->
+    <string name="subjects">Izifundo</string>
+    <string name="add_custom_subject">+ Faka Isifundo Sakho</string>
+
+    <!-- Goals -->
+    <string name="weekly_goals">Izinjongo Zesonto</string>
+    <string name="total_weekly_goal">Isamba Sezinjongo Zesonto</string>
+    <string name="save_goals">Gcina Izinjongo</string>
+
+    <!-- Graphs -->
+    <string name="study_graphs">Amashadi Esifundo</string>
+    <string name="hours_per_subject">Amahora Ngesifundo</string>
+    <string name="daily_trend">Inqubo Yansuku zonke</string>
+
+    <!-- Achievements -->
+    <string name="achievements">Izimpumelelo</string>
+
+    <!-- Settings -->
+    <string name="settings">Izilungiselelo</string>
+    <string name="logout">Phuma</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_settings">Izilungiselelo</string>
+    <string name="cd_back">Emuva</string>
+    <string name="cd_add">Faka</string>
+</resources>
