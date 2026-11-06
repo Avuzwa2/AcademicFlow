@@ -61,6 +61,10 @@ class LoginActivity : AppCompatActivity() {
             goToDashboard()
         }
 
+        binding.btnSignUp.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
         binding.tvSignUpLink.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
