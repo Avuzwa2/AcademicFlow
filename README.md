@@ -1,118 +1,131 @@
-# AcademicFlow 
+# AcademicFlow 🎓
 
-> **A mobile study tracker app for students — track sessions, set weekly goals, and build better study habits.**
+> **A Comprehensive Android Study Tracking Application with Offline-First Sync, NoSQL Cloud Database, Blob Storage, Multi-Language Support, and Automated CI/CD Testing.**
 
 [![Android](https://img.shields.io/badge/Platform-Android-green.svg)](https://www.android.com/)
 [![Kotlin](https://img.shields.io/badge/Language-Kotlin-purple.svg)](https://kotlinlang.org/)
+[![Build Status](https://github.com/Avuzwa2/AcademicFlow/actions/workflows/build.yml/badge.svg)](https://github.com/Avuzwa2/AcademicFlow/actions/workflows/build.yml)
 [![API](https://img.shields.io/badge/API-24%2B-blue.svg)](https://developer.android.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-##  About the App
+## 📱 Executive Overview & App Purpose
 
-**AcademicFlow** is a study management application built for students who want to take control of their academic workload. It helps you log study sessions, set weekly goals per subject, visualise your progress through graphs, and stay motivated with achievement badges.
+**AcademicFlow** is a modern, student-centric academic productivity application designed to empower students to track their study time, manage modules, set weekly goal targets, and stay motivated throughout the semester.
 
-This app was developed as part of **OPSC6311 – Open Source Coding (Part 2)** at **The Independent Institute of Education (IIE)**.
+### The Core Problem It Solves
+Students frequently struggle with time management across multiple modules, resulting in burnout and neglected subjects. **AcademicFlow** addresses this by providing:
+- Real-time time tracking per subject.
+- Automated goal progress visualization.
+- Multi-language accessibility for South African students (English, Afrikaans, and isiZulu).
+- Seamless offline functionality with automatic background cloud synchronization when connected.
 
-### The Problem It Solves
+---
 
-Most students struggle to track how much time they actually spend studying each subject. Without proper monitoring, it's easy to neglect tougher modules, underestimate your workload, and burn out before exams. AcademicFlow solves this by making study tracking **simple, visual, and even a little fun**.
+## 🚀 Release Notes (Updates Since Prototype / Part 3 Additions)
 
-### Inspiration & Research
+This final release (**v1.0 - PoE Final Version**) builds upon the initial prototype with major architectural upgrades and innovative feature enhancements:
 
-AcademicFlow was designed after analysing three existing study/productivity apps:
+### 🌟 Key Innovative Features Introduced in Version 1.0:
+1. **Cloud Blob Storage Integration**:
+   - Integrated **Firebase Cloud Storage** for storing image note blobs attached to study sessions.
+2. **NoSQL Cloud Database Integration**:
+   - Integrated **Google Cloud Firestore** (NoSQL Database) to store and read live user documents, study sessions, weekly goals, and subjects.
+3. **Single Sign-On (SSO)**:
+   - Added Single Sign-On capabilities allowing 1-tap authenticated access and instant security notifications.
+4. **Multi-Language Accessibility (South African Languages)**:
+   - Full localized string support for **English**, **Afrikaans** (`values-af`), and **isiZulu** (`values-zu`).
+5. **Real-time Push & Alert Notification System**:
+   - Implemented `NotificationHelper` utilizing Android Notification Channels to push real-time alerts for study goals and authentication updates.
+6. **Live REST API Quote Integration**:
+   - Retrofit-powered integration to fetch live study motivation quotes from an online REST API (`ZenQuotes API`).
+7. **Offline Mode with Automatic Cloud Sync**:
+   - RoomDB persistent local caching paired with auto-sync capability when network connectivity is restored.
+8. **Automated CI/CD Pipeline (GitHub Actions)**:
+   - Integrated automated testing and APK compilation on every push/PR via GitHub Actions (`.github/workflows/build.yml`).
+9. **Google Play Store Publication Readiness**:
+   - Enabled **R8 Code Shrinking**, resource optimization, ProGuard rules, versioning, and Android App Bundle (`.aab`) generation.
 
-| App | What We Learned |
+---
+
+## 🏗️ Design Considerations & Architecture
+
+### Architecture Pattern: MVVM (Model-View-ViewModel)
+AcademicFlow strictly adheres to Google's recommended **MVVM Architecture** combined with the Repository Pattern:
+
+```
+[ UI Layer (Activities & XML) ] 
+             │
+             ▼
+      [ ViewModel Layer ]
+             │
+             ▼
+     [ Repository Layer ]
+       │            │
+       ▼            ▼
+[ Local RoomDB ]  [ Cloud NoSQL & Blob Storage ]
+```
+
+### Key Design Pillars:
+- **Offline-First Resilience**: All write operations execute locally in RoomDB immediately so the user experience is instant, with background tasks pushing updates to Cloud Firestore NoSQL DB.
+- **Security & Privacy**: User passwords are encrypted with SHA-256 before local or cloud storage.
+- **Material Design 3 Principles**: Clean typography, adaptive color indicators for subjects, and rounded progress components.
+
+---
+
+## 🛠️ GitHub & GitHub Actions CI/CD Integration
+
+### Version Control & Tagging
+This project is hosted on GitHub at [Avuzwa2/AcademicFlow](https://github.com/Avuzwa2/AcademicFlow).
+- **Tag**: `finalPoE` marks the official final release commit.
+
+### Continuous Integration (GitHub Actions)
+The workflow file `.github/workflows/build.yml` automates the build and testing process on every code push:
+- **Runner**: `ubuntu-latest`
+- **JDK Version**: Java 17 (Temurin distribution)
+- **Automated Tasks**:
+  1. `chmod +x gradlew`
+  2. `./gradlew testDebugUnitTest` (Runs all local JUnit unit tests)
+  3. `./gradlew assembleDebug` (Verifies full APK build compilation)
+
+---
+
+## 📸 Screenshots & UI Assets
+
+| Screen | Description |
 | :--- | :--- |
-| **Forest** | Visual progress is deeply motivating — we adapted it into a progress bar |
-| **YPT (Yeolpumta)** | Subject-based analytics are powerful — we simplified the UI |
-| **Study Bunny** | Gamification keeps users engaged — we made badges academic-focused |
-
-Full research and comparative analysis is documented in the **Part 1 planning document**.
-
----
-
-##  Features
-
-### Core Features
--  **User Registration & Login** — passwords are hashed with SHA-256 before storage
--  **Subject Management** — create, edit, and delete study subjects
-- ️ **Study Session Logging** — log duration, subject, date, description, and attach a photo of your notes
--  **Session History** — view past sessions with date filtering
--  **Weekly Goals** — set a total weekly target and per-subject targets
--  **Study Graphs** — bar charts and daily trend lines powered by MPAndroidChart
--  **Achievements** — earn badges like "7-Day Streak" and "Subject Master"
--  **Settings Menu** — profile info, logout, and app preferences
-
-### Technical Features
--  **Offline-first** — all data stored locally using Room (SQLite)
--  **Encrypted passwords** — never stored in plain text
--  **REST API integration** — cloud backup endpoint (coming in Part 3)
--  **Material Design 3** — clean, modern UI following Google's guidelines
--  **MVVM Architecture** — separation of concerns for maintainability
+| **Login & SSO** | Encrypted sign-in, account registration, and SSO authentication |
+| **Dashboard** | REST API motivational quote, weekly progress bar, and subject breakdown |
+| **Add Session** | Date picker, duration, description, and attached photo blob upload |
+| **Session History** | List of logged sessions, subject filtering, and photo preview dialogs |
+| **Weekly Goals** | Interactive target inputs with dynamic real-time progress banners |
+| **App Settings** | Language selector (English, Afrikaans, isiZulu) and notification toggles |
 
 ---
 
-##  Design Considerations
+## 🧪 Unit Testing
 
-### Architecture
+Unit tests are located in `app/src/test/java/com/academicflow/app/AcademicFlowUnitTest.kt` and cover core logic:
+- `PasswordHasher`: Verifies SHA-256 hashing and password verification.
+- `DateUtils`: Tests start-of-week calculation (Monday 00:00) and date formatting.
 
-AcademicFlow follows the **MVVM (Model-View-ViewModel)** pattern:
-
-
-**Why MVVM?**
-- **Testable** — ViewModels can be unit tested without UI
-- **Scalable** — adding new features doesn't break existing code
-- **Lifecycle-aware** — survives screen rotations cleanly
-
-### Package Structure
-
-
-### UI/UX Principles
-
-- **Consistent colour palette** — primary `#4F46E5` (indigo), accent `#7C3AED` (purple)
-- **Material Design components** — `TextInputLayout`, `MaterialButton`, `MaterialCardView`
-- **Simple navigation** — all main screens reachable from the Dashboard
-- **Clear feedback** — progress bars during loading, Toasts for errors
-
-### Security
-
-- **SHA-256 password hashing** — no plain text passwords ever stored
-- **Local-only by default** — user data stays on-device unless they opt into cloud backup
-- **No hardcoded API keys** — sensitive config stored outside version control
+To execute tests locally:
+```bash
+./gradlew testDebugUnitTest
+```
 
 ---
 
-##  Tech Stack
+## 📦 How to Build for Google Play Store
 
-| Layer | Technology | Purpose |
-| :--- | :--- | :--- |
-| **Language** | Kotlin | Modern Android development |
-| **UI** | XML Layouts + Material 3 | Native Android UI |
-| **Architecture** | MVVM + Repository | Clean separation of concerns |
-| **Local DB** | Room (SQLite) | Persistent storage |
-| **Async** | Kotlin Coroutines + Flow | Non-blocking operations |
-| **Networking** | Retrofit + OkHttp | REST API communication |
-| **Image Loading** | Glide | Efficient image handling |
-| **Charts** | MPAndroidChart | Study graphs |
-| **Security** | AndroidX Security Crypto | Encrypted credentials |
-| **Build** | Gradle Kotlin DSL | Build automation |
-| **CI/CD** | GitHub Actions | Automated build + test |
+To generate the production Android App Bundle (`.aab`) for Google Play Console:
+```bash
+./gradlew bundleRelease
+```
+The resulting `.aab` file is output to: `app/build/outputs/bundle/release/app-release.aab`.
 
 ---
 
-##  Getting Started
-
-### Prerequisites
-- **Android Studio** Panda 4 (2025.3.4) or newer
-- **JDK** 17+
-- **Android SDK** API 24+ (compile SDK 36)
-- **Git** installed
-
-### Installation
-
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/Avuzwa2/AcademicFlow.git
-   cd AcademicFlow
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
